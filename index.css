@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-50 text-gray-800 font-sans;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  
+
+
+/* ===== Global invisible scrollbar (still scrollable) ===== */
+/* Body owns the vertical scroll; bar visuals are hidden */
+html,
+body {
+  /* keep scrolling working */
+  overflow-y: auto;
+  /* no horizontal scroll anywhere */
+  overflow-x: hidden;
+
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE/Edge (legacy) */
+  -ms-overflow-style: none;
+}
+
+/* WebKit (Chrome, Safari, Edge Chromium) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* OPTIONAL: utility to hide scrollbars on any nested scrollable container
+   Usage: add class="no-scrollbar" to a div that has overflow-auto/scroll */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* Hide scrollbar visuals but keep scrolling — cross-browser */
+html.has-invisible-scrollbar,
+body.has-invisible-scrollbar {
+  /* keep scrolling */
+  overflow-y: auto;
+  /* no horizontal bar */
+  overflow-x: hidden;
+  /* Firefox */
+  scrollbar-width: none;
+  /* IE/Edge legacy */
+  -ms-overflow-style: none;
+}
+html.has-invisible-scrollbar::-webkit-scrollbar,
+body.has-invisible-scrollbar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* WebKit: hide the bar but scroll still works */
+}
+
+/* If any nested container creates its own scroll, hide those too under AllBrands scope */
+.all-brands-page,
+.all-brands-page * {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE/Edge legacy */
+}
+.all-brands-page *::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;                  /* WebKit */
+}
